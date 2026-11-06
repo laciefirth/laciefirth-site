@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&family=Baskervville:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="clock.js" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -22,8 +23,10 @@
 </header>
 <main class="home">
   <h1 class="name">Lacie Firth</h1>
-  <p class="statement">Electrical Engineering at the University of Toronto</p>
-  <p class="statement">I share what I&rsquo;m learning, building and experimenting with.</p>
+  <div class="intro">
+    <p class="intro-left">Electrical Engineering at the University of Toronto</p>
+    <p class="intro-right">I share what I&rsquo;m learning, building and experimenting with.</p>
+  </div>
   <div class="tiles">
     <div class="tile"></div>
     <div class="tile"></div>
@@ -31,20 +34,25 @@
 </main>
 <footer class="site-footer">
   <div class="footer-top">
-    <div>
+    <div class="footer-left">
       <p>Toronto, ON</p>
+      <p><a class="email-button" href="mailto:lacie.firth@mail.utoronto.ca">Email Me</a></p>
       <p><a href="mailto:lacie.firth@mail.utoronto.ca">lacie.firth@mail.utoronto.ca</a></p>
     </div>
+    <div class="footer-logo"><img src="logo.svg" alt=""></div>
     <div class="footer-socials">
       <p class="label">Socials</p>
       <p><a href="https://www.instagram.com/laciefirth/">instagram</a></p>
       <p><a href="https://x.com/Laciedfirth">x (twitter)</a></p>
       <p><a href="https://www.linkedin.com/in/lacie-firth">linkedin</a></p>
       <p><a href="https://substack.com/@laciedfirth">substack</a></p>
-      <p><a href="https://github.com/">github</a></p>
+      <p><a href="https://github.com/laciefirth">github</a></p>
     </div>
   </div>
-  <p class="footer-small">&copy;2026 Lacie Firth</p>
+  <div class="footer-bottom">
+    <span>&copy;2026 Lacie Firth</span>
+    <span id="clock"></span>
+  </div>
 </footer>
 </body>
 </html>
