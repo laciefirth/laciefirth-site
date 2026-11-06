@@ -4,13 +4,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 — Lacie Firth</title>
-<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baskervville:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@300;400;700&family=Baskervville:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="clock.js" defer></script>
 </head>
 <body>
-<h1 class="not-found">404</h1>
+<header class="site-header">
+  <nav>
+    <a href="works.html">Works</a>
+    <a href="about.html">About</a>
+    <a href="index.html" class="logo"><img src="logo.svg" alt="Lacie Firth — home"></a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<main class="nf">
+  <h1 class="not-found">404</h1>
+</main>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-left">
+      <p>Toronto, ON</p>
+      <p><a href="mailto:lacie.firth@mail.utoronto.ca">lacie.firth@mail.utoronto.ca</a></p>
+      <p><a class="email-button" href="mailto:lacie.firth@mail.utoronto.ca">Email Me</a></p>
+    </div>
+    <div class="footer-socials">
+      <p class="label">Socials</p>
+      <p><a href="https://www.instagram.com/laciefirth/">instagram</a></p>
+      <p><a href="https://x.com/Laciedfirth">x (twitter)</a></p>
+      <p><a href="https://www.linkedin.com/in/lacie-firth">linkedin</a></p>
+      <p><a href="https://substack.com/@laciedfirth">substack</a></p>
+      <p><a href="https://github.com/laciefirth">github</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy;2026 Lacie Firth</span>
+    <span id="clock"></span>
+  </div>
+</footer>
 </body>
 </html>

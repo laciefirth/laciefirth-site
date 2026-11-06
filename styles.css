@@ -201,14 +201,17 @@ main.home { padding: 0 0 var(--space); }
 }
 
 /* ===== 404 ===== */
-.not-found {
-  margin: 0;
-  height: 100vh;
+main.nf {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 var(--edge);
   overflow: hidden;
-  font-size: min(54vw, 100vh);
+}
+
+.not-found {
+  font-size: 52vw;          /* stretches across the page */
   font-variant-numeric: lining-nums;
   line-height: 1;
+  white-space: nowrap;
 }
