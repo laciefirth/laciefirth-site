@@ -2,6 +2,7 @@
 :root {
   --bg: #F5F5F5;
   --text: #290000;
+  --muted: #7A6A6A;
   --accent: #BE0E34;
   --tile: #FFFFFF;
   --line: #290000;
@@ -9,14 +10,18 @@
   --font-heading: "Baskervville", Georgia, serif;
   --font-body: "Atkinson Hyperlegible Mono", ui-monospace, monospace;
 
-  --gutter: 24px;           /* small side margin */
+  --edge: 6vw;              /* side margin for nav + footer text */
+  --rule-inset: 8vw;        /* side margin for the thin lines */
+  --gutter: 24px;           /* small side margin for page content */
   --space: 64px;            /* vertical whitespace between blocks */
   --label-spacing: 0.2em;   /* letter spacing for nav + labels */
 
-  --size-body: 16px;
+  --size-body: 15px;
   --size-label: 13px;
-  --size-big: clamp(40px, 7vw, 88px);
-  --size-name: clamp(56px, 14vw, 200px);
+  --size-small: 11px;
+  --size-big: clamp(32px, 4vw, 52px);
+  --size-name: 17.5vw;      /* sized so "Lacie Firth" spans the page */
+  --logo-size: 32px;
   --tile-size: min(40vw, 360px);
 }
 
@@ -25,6 +30,9 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
@@ -34,30 +42,32 @@ body {
 
 a { color: var(--accent); }
 
+p { margin: 0 0 8px; }
+
 h1 {
   font-family: var(--font-heading);
   font-weight: 700;
   margin: 0;
-  line-height: 1.05;
+  line-height: 1.1;
 }
 
-main {
-  padding: var(--space) var(--gutter);
+.label {
+  text-transform: uppercase;
+  letter-spacing: var(--label-spacing);
+  font-size: var(--size-label);
 }
+
+.muted { color: var(--muted); }
 
 /* ===== Header ===== */
-.site-header {
-  padding: 24px var(--gutter);
-  border-bottom: 1px solid var(--line);
-}
-
 .site-header nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  padding: 16px var(--edge);
 }
 
-.site-header a {
+.site-header nav a {
   color: var(--text);
   text-decoration: none;
   text-transform: uppercase;
@@ -65,24 +75,62 @@ main {
   font-size: var(--size-label);
 }
 
-/* ===== Labels ===== */
-.label {
+.site-header nav a:nth-child(2),
+.site-header nav a:nth-child(4) { justify-self: center; }
+.site-header nav a:last-child { justify-self: end; }
+.site-header .logo { justify-self: center; line-height: 0; }
+.site-header .logo img { width: var(--logo-size); height: var(--logo-size); }
+
+.site-header::after,
+.site-footer::before {
+  content: "";
+  display: block;
+  margin: 0 var(--rule-inset);
+  border-top: 1px solid var(--line);
+}
+
+/* ===== Main ===== */
+main {
+  flex: 1;
+  padding: var(--space) var(--gutter);
+}
+
+main.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+main.center .big {
+  font-size: var(--size-big);
+  max-width: 20ch;
+  margin-bottom: 32px;
+}
+
+main.center .label { margin-bottom: 12px; }
+
+.button {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 1px solid var(--accent);
+  text-decoration: none;
   text-transform: uppercase;
   letter-spacing: var(--label-spacing);
   font-size: var(--size-label);
-  margin: 0 0 24px;
+  margin-bottom: 24px;
 }
 
 /* ===== Home ===== */
+main.home { text-align: center; }
+
 .name {
   color: var(--accent);
   font-size: var(--size-name);
-  text-align: center;
-}
-
-.statement {
-  text-align: center;
-  margin: 32px 0 var(--space);
+  line-height: 1;
+  white-space: nowrap;
+  margin-bottom: 40px;
 }
 
 .tiles {
@@ -90,6 +138,7 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--gutter);
+  margin-top: var(--space);
 }
 
 .tile {
@@ -98,8 +147,29 @@ main {
   background: var(--tile);
 }
 
-/* ===== Inner pages ===== */
-.big {
-  font-size: var(--size-big);
-  margin-bottom: var(--space);
+/* ===== Footer ===== */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gutter);
+  padding: 40px var(--edge) 32px;
+}
+
+.site-footer p { margin: 0 0 4px; }
+.site-footer a { color: var(--text); text-decoration: none; }
+.footer-socials { text-align: right; white-space: nowrap; }
+.footer-socials .label { color: var(--muted); }
+
+.site-footer .footer-small {
+  padding: 0 var(--edge) 24px;
+  font-size: var(--size-small);
+  color: var(--muted);
+}
+
+/* ===== Phones ===== */
+@media (max-width: 600px) {
+  :root { --edge: 16px; --rule-inset: 16px; --label-spacing: 0.12em; --size-label: 11px; }
+  .site-header nav { padding-top: 12px; padding-bottom: 12px; }
+  .footer-top { flex-direction: column; gap: 24px; }
+  .footer-socials { text-align: left; }
 }
