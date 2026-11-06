@@ -1,0 +1,105 @@
+/* ===== Edit these to restyle the whole site ===== */
+:root {
+  --bg: #F5F5F5;
+  --text: #290000;
+  --accent: #BE0E34;
+  --tile: #FFFFFF;
+  --line: #290000;
+
+  --font-heading: "Baskervville", Georgia, serif;
+  --font-body: "Atkinson Hyperlegible Mono", ui-monospace, monospace;
+
+  --gutter: 24px;           /* small side margin */
+  --space: 64px;            /* vertical whitespace between blocks */
+  --label-spacing: 0.2em;   /* letter spacing for nav + labels */
+
+  --size-body: 16px;
+  --size-label: 13px;
+  --size-big: clamp(40px, 7vw, 88px);
+  --size-name: clamp(56px, 14vw, 200px);
+  --tile-size: min(40vw, 360px);
+}
+
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: 1.6;
+}
+
+a { color: var(--accent); }
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.05;
+}
+
+main {
+  padding: var(--space) var(--gutter);
+}
+
+/* ===== Header ===== */
+.site-header {
+  padding: 24px var(--gutter);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.site-header a {
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: var(--label-spacing);
+  font-size: var(--size-label);
+}
+
+/* ===== Labels ===== */
+.label {
+  text-transform: uppercase;
+  letter-spacing: var(--label-spacing);
+  font-size: var(--size-label);
+  margin: 0 0 24px;
+}
+
+/* ===== Home ===== */
+.name {
+  color: var(--accent);
+  font-size: var(--size-name);
+  text-align: center;
+}
+
+.statement {
+  text-align: center;
+  margin: 32px 0 var(--space);
+}
+
+.tiles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--gutter);
+}
+
+.tile {
+  width: var(--tile-size);
+  height: var(--tile-size);
+  background: var(--tile);
+}
+
+/* ===== Inner pages ===== */
+.big {
+  font-size: var(--size-big);
+  margin-bottom: var(--space);
+}
