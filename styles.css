@@ -70,8 +70,8 @@ h1 {
 }
 
 .site-header nav {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  justify-content: space-between;   /* equal gaps, edge to edge */
   align-items: center;
   padding: 6px var(--edge);
 }
@@ -85,10 +85,7 @@ h1 {
   font-weight: var(--weight-fine);
 }
 
-.site-header nav a:nth-child(2),
-.site-header nav a:nth-child(4) { justify-self: center; }
-.site-header nav a:last-child { justify-self: end; }
-.site-header .logo { justify-self: center; line-height: 0; }
+.site-header .logo { line-height: 0; }
 .site-header .logo img { width: var(--logo-size); height: var(--logo-size); }
 
 /* ===== Main ===== */
