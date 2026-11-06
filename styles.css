@@ -5,7 +5,7 @@
   --muted: #7A6A6A;
   --accent: #BE0E34;
   --tile: #FFFFFF;
-  --line: #290000;
+  --line: rgba(41, 0, 0, 0.25);  /* dimmed lines */
 
   --font-heading: "Baskervville", Georgia, serif;
   --font-body: "Atkinson Hyperlegible Mono", ui-monospace, monospace;
@@ -17,12 +17,14 @@
   --size-body: 15px;
   --size-label: 13px;
   --size-small: 11px;
-  --size-intro: clamp(20px, 2.2vw, 30px);
   --size-big: clamp(32px, 4vw, 52px);
   --size-name: 19.2vw;      /* sized so "Lacie Firth" spans edge to edge */
   --logo-size: 28px;
   --footer-logo-size: 56px;
-  --tile-size: min(40vw, 360px);
+  --tile-gap: 12px;
+  --tile-short: 160px;
+  --tile-mid: 230px;
+  --tile-tall: 310px;
 }
 
 /* ===== Base ===== */
@@ -111,50 +113,40 @@ main.center .label { margin-bottom: 12px; }
 main.home { padding: 0 0 var(--space); }
 
 .name {
-  color: var(--accent);
+  color: var(--text);
   font-size: var(--size-name);
   line-height: 1;
   white-space: nowrap;
   text-align: center;
   padding: 8px 0 16px;
-  border-bottom: 1px solid var(--line);
 }
 
 .intro {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 32px;
-  padding: 20px var(--edge);
-  border-bottom: 1px solid var(--line);
-}
-
-.intro p { margin: 0; }
-
-.intro-left {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: var(--size-intro);
-  line-height: 1.2;
-  max-width: 18em;
-}
-
-.intro-right { max-width: 26em; }
-
-.tiles {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-top: var(--space);
+  text-align: center;
   padding: 0 var(--edge);
 }
 
-.tile {
-  width: var(--tile-size);
-  height: var(--tile-size);
-  background: var(--tile);
+.intro p { margin: 0 0 4px; }
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;           /* columns end at different heights */
+  gap: var(--tile-gap);
+  margin-top: var(--space);
+  padding: 0 6vw;
 }
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tile-gap);
+}
+
+.tile { background: var(--tile); }
+.tile.short { height: var(--tile-short); }
+.tile.mid { height: var(--tile-mid); }
+.tile.tall { height: var(--tile-tall); }
 
 /* ===== Footer ===== */
 .site-footer {
@@ -199,7 +191,10 @@ main.home { padding: 0 0 var(--space); }
 /* ===== Phones ===== */
 @media (max-width: 600px) {
   :root { --label-spacing: 0.12em; --size-label: 11px; }
-  .intro { flex-direction: column; gap: 12px; }
+  .tiles { display: block; columns: 2; column-gap: var(--tile-gap); padding: 0 var(--edge); }
+  .col { display: contents; }
+  .tile { break-inside: avoid; margin-bottom: var(--tile-gap); }
+  :root { --tile-short: 120px; --tile-mid: 170px; --tile-tall: 230px; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-logo { display: none; }
   .footer-socials { text-align: left; }
