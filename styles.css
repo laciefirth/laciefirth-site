@@ -64,6 +64,8 @@ h1 {
 
 /* ===== Header ===== */
 .site-header {
+  position: relative;
+  z-index: 1;               /* keeps nav clickable above the big name */
   border-bottom: 1px solid var(--line);
 }
 
@@ -199,4 +201,17 @@ main.home { padding: 0 0 var(--space); }
   :root { --tile-short: 120px; --tile-mid: 170px; --tile-tall: 230px; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-socials { text-align: left; }
+}
+
+/* ===== 404 ===== */
+.not-found {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: min(54vw, 100vh);
+  font-variant-numeric: lining-nums;
+  line-height: 1;
 }
